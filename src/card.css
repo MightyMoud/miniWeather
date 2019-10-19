@@ -1,7 +1,28 @@
-.card {
-    width: 300px;
-    height: 400px;
-    background: yellow;
-    border-radius: 10px;
-    box-shadow: 2px 2px 20px gray;
+.crd {
+    margin: 10px;
+    padding: 5px 10px;
+    width: 400px;
+    height: 700px;
+    background: linear-gradient(0deg, #6f1b87, #432C85);
+    border-radius: 20px;
+    box-shadow: 2px 2px 20px rgba(197, 109, 255, 0.287);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.wi::before {
+    font-size: 250px;
+    font-weight: 300;
+    background: linear-gradient(45deg, #00FF9B, #003eff);
+    background-clip: text;
+    color: transparent;
+}
+
+.wi::after {
+    content: "";
+    text-shadow: 5px 5px 2px black;
 }
