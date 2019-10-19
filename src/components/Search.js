@@ -1,5 +1,10 @@
 import React , {useState} from 'react'
 import '../App.css';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
@@ -21,15 +26,18 @@ const Search = (props) => {
 
     return (
     <div className="searchForm">
-        <form  className="search">
-        <input
-            placeholder="Enter your city"
+        <InputGroup className="mb-3">
+            <FormControl
+            placeholder="Enter your city..."
             value={city}
             onChange={handleUserInput}
-            type="text"
-        />
-        <input onClick={searchWeather} type="submit" value="SEARCH" />
-        </form>
+            aria-label="City search name"
+            aria-describedby="basic-addon2"
+            />
+            <InputGroup.Append>
+            <Button variant="primary" onClick={searchWeather} >Search</Button>
+            </InputGroup.Append>
+        </InputGroup>
     </div>
     );
 }
