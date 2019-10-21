@@ -13,7 +13,7 @@
     justify-content: flex-start;
     align-items: center;
     margin: 0 auto;
-    background: linear-gradient(0deg, #432c85, #6d4cc8)
+    background: linear-gradient(0deg, #7c61c7, #b290ff)
 }
 
 @keyframes spin {
@@ -61,4 +61,39 @@
     flex: 2;
     text-transform: uppercase;
     font-family: 'Lato', sans-serif;
+}
+
+.loading {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    margin: 20px 0px;
+    display: flex;
+    width: 300px;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.red {
+    color: red;
+    background: black;
+}
+
+.white {
+    color: white;
+}
+
+.field {
+    background: linear-gradient(45deg, #6d4cc8 30%, #432c85 90%);
+    border-radius: 5px;
+}
+
+.MuiInputBase-input {
+    color: white;
 }

@@ -8,8 +8,7 @@ import WeatherCard from './WeatherCard';
 import Error from'./Error';
 import Welcome from './Welcome';
 import Header from './Header';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
+
 
 
 
@@ -125,7 +124,7 @@ const App = ()=> {
        <Welcome />
        :
        loading === true ?
-       <div>     
+       <div className='loading'>     
         <i className='fas fa-spinner fa-4x spinner '></i>
        </div>
        :

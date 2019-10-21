@@ -1,28 +1,56 @@
 .crd {
     margin: 10px;
-    padding: 5px 10px;
-    width: 400px;
-    height: 700px;
+    padding: 25px 25px;
+    width: 350px;
+    height: 550px;
     background: linear-gradient(0deg, #6f1b87, #432C85);
     border-radius: 20px;
     box-shadow: 2px 2px 20px rgba(197, 109, 255, 0.287);
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
 }
 
-.wi::before {
-    font-size: 250px;
-    font-weight: 300;
-    background: linear-gradient(45deg, #00FF9B, #003eff);
+.ic::before {
+    font-size: 10em;
+    background: linear-gradient(to right, #de6262, #ffb88c);
     background-clip: text;
     color: transparent;
 }
 
-.wi::after {
+.ic::after {
     content: "";
     text-shadow: 5px 5px 2px black;
+}
+
+.crd__temp {
+    font-size: 2.5rem;
+}
+
+.crd__condition {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.crd__highLow {
+    font-size: 1.5rem;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.crd--max {
+    font-size: 1.2rem;
+    color: red;
+    text-transform: uppercase;
+}
+
+.crd--min {
+    font-size: 1.2rem;
+    color: blue;
+    text-transform: uppercase;
 }

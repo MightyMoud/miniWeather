@@ -1,14 +1,40 @@
 import React , {useState} from 'react'
 import '../App.css';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import blue from '@material-ui/core/colors/blue';
+import PropTypes from "prop-types";
+
+import { withStyles } from "@material-ui/core/styles";
 
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+        main: '#003EFF',
+        sub: '#00FF9B'
+    },
+    secondary: {
+      main: '#f44336',
+    },
+  },
+});
+
+
+const styles = {
+    root: {
+    background: "linear-gradient(45deg, #6d4cc8 30%, #432c85 90%)"
+    },
+    input: {
+      color: "white"
+    }
+  };
 
 
 const Search = (props) => {
+    const { classes } = props;
 
     const[city,setCity] = useState('');
 
@@ -26,20 +52,38 @@ const Search = (props) => {
 
     return (
     <div className="searchForm">
-        <InputGroup className="mb-3">
-            <FormControl
-            placeholder="Enter your city..."
+       <ThemeProvider theme={theme}>
+        <form  className="search">
+        <TextField
+            id="outlined-dense"
+            label="Enter your city"
+            margin="dense"
+            variant="filled"
             value={city}
             onChange={handleUserInput}
-            aria-label="City search name"
-            aria-describedby="basic-addon2"
-            />
-            <InputGroup.Append>
-            <Button variant="primary" onClick={searchWeather} >Search</Button>
-            </InputGroup.Append>
-        </InputGroup>
+            className={classes.root}
+            InputProps={{
+                className: classes.input
+            }}
+         />
+     
+        <Button 
+            onClick={searchWeather} 
+            type="submit" 
+            value="SEARCH"
+            variant = 'contained'
+            className = 'fieled'
+            color = 'primary'
+        >SEARCH
+        </Button>
+        </form>
+        </ThemeProvider>
     </div>
     );
 }
 
-export default Search;
+Search.propTypes = {
+    classes: PropTypes.object.isRequired
+  };
+
+export default withStyles(styles)(Search);
