@@ -1,12 +1,9 @@
 import React , {useState} from 'react'
 import '../App.css';
 import TextField from '@material-ui/core/TextField';
-import Input from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
 import PropTypes from "prop-types";
-
 import { withStyles } from "@material-ui/core/styles";
 
 
@@ -64,6 +61,9 @@ const Search = (props) => {
             className={classes.root}
             InputProps={{
                 className: classes.input
+            }}
+            InputLabelProps={{
+              className: classes.input
             }}
          />
      
