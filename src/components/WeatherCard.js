@@ -75,7 +75,6 @@ const WeatherCard = ({city, country, temp, maxTemp, minTemp, id, main}) => {
                 <h2> { country } </h2>
             </div>
             <div className="crd__icon">
-                {/* <i className={icon}></i> */}
                 <img src={icon} alt=""/>
             </div>
             <div className="crd__temp">

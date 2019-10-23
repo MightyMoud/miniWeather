@@ -1,0 +1,115 @@
+.det {
+    margin: 10px;
+    padding: 25px 25px;
+    width: 60vw;
+    height: 50vh;
+    border-radius: 20px;
+    box-shadow: 2px 2px 20px rgba(197, 109, 255, 0.452);
+    color: white;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.det__up {
+    background: bisque;
+    flex: 0 0 40%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.up__dta {
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.dta__icon {
+    flex: 1 1 50%;
+    background: chocolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dta__sun {
+    flex: 1 0 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dta__nums {
+    flex: 1 1 50%;
+    background: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.up__loc {
+    flex: 0 1 50%;
+    background: black;
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.det__dwn {
+    flex: 1 0 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: chocolate;
+    width: 100%;
+}
+
+.dwn__day {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: crimson;
+    height: 90%;
+}
+
+.det__icon {
+    transform: scale(0.7);
+    transform-origin: center center;
+}
+
+.det__temp {
+    font-size: 1.4rem;
+}
+
+.det__condition {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.det__highLow {
+    font-size: 1rem;
+    width: 100%;
+    display: -webkit-flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.det--max {
+    font-size: 0.9rem;
+    color: red;
+    text-transform: uppercase;
+    text-shadow: 0.5px 0.5px 2px rgba(255, 255, 255, 0.185);
+}
+
+.det--min {
+    font-size: 0.9rem;
+    color: blue;
+    text-transform: uppercase;
+}
