@@ -3,6 +3,8 @@ import '../card.css';
 import '../css/all.min.css'
 import '../css/weather-icons.min.css'
 import '../css/weather-icons-wind.min.css'
+import { Router, Link } from "@reach/router";
+
 
 // ((1-((temp-17)/23)*254));
 
@@ -69,30 +71,31 @@ const WeatherCard = ({city, country, temp, maxTemp, minTemp, id, main}) => {
     }
     
     return(
-        <div className="crd" style= {{background: `${color}`}}>
-            <div className="crd__location">
-                <h1> { city } </h1>
-                <h2> { country } </h2>
-            </div>
-            <div className="crd__icon">
-                <img src={icon} alt=""/>
-            </div>
-            <div className="crd__temp">
-                <h2> {temp.toFixed(0)} <i className='wi wi-celsius'></i></h2>
-                <h3 className="crd__condition">{ main }</h3>
-            </div>
-            <div className="crd__highLow">
-                <div className="crd__high">
-                    <h3> <i className='wi wi-direction-up'></i> { maxTemp.toFixed(2) } <i className='wi wi-celsius'></i> </h3>
-                    <h4 className='crd--max'>max</h4>
+            <div className="crd" style= {{background: `${color}`}}>
+                <div className="crd__location">
+                    <h1> { city } </h1>
+                    <h2> { country } </h2>
                 </div>
-                <div className="crd__low">
-                    <h3> <i className='wi wi-direction-down'></i> { minTemp.toFixed(2) } <i className='wi wi-celsius'></i> </h3>
-                    <h4 className='crd--min'>min</h4>
+                <div className="crd__icon">
+                    <img src={icon} alt=""/>
                 </div>
+                <div className="crd__temp">
+                    <h2> {temp.toFixed(0)} <i className='wi wi-celsius'></i></h2>
+                    <h3 className="crd__condition">{ main }</h3>
+                </div>
+                <div className="crd__highLow">
+                    <div className="crd__high">
+                        <h3> <i className='wi wi-direction-up'></i> { maxTemp.toFixed(2) } <i className='wi wi-celsius'></i> </h3>
+                        <h4 className='crd--max'>max</h4>
+                    </div>
+                    <div className="crd__low">
+                        <h3> <i className='wi wi-direction-down'></i> { minTemp.toFixed(2) } <i className='wi wi-celsius'></i> </h3>
+                        <h4 className='crd--min'>min</h4>
+                    </div>
+                </div>
+                {/* <a href='#' className='crd__more'>More <i className='wi wi-direction-right'></i></a> */}
+                <Link to ={`/details/${city}/${country}/${temp.toFixed(0)}/${main}`}className='crd__more' >More <i className='wi wi-direction-right'></i></Link>
             </div>
-            <a href='#' className='crd__more'>More <i className='wi wi-direction-right'></i></a>
-        </div>
     )
 
 }

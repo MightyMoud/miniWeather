@@ -1,12 +1,14 @@
-import React, { useState,useEffect,useReducer } from 'react';
+import React, { useState } from 'react';
 import '../css/all.min.css'
 import '../css/weather-icons.min.css'
 import '../css/weather-icons-wind.min.css'
 import '../App.css';
 import Header from './Header';
 import WeatherEngine from './WeatherEngine';
+import ForecastEngine from './ForecastEngine';
 import ForecastCard from './ForecastCard';
 import Button from '@material-ui/core/Button';
+
 
 
 // it was quite challenging to make multiple instances of the WeatherEnging component using a button
@@ -46,14 +48,12 @@ const App = ()=> {
       default:
         return (
           <div className='container'>
-              <WeatherEngine/>
-            {/* <ForecastCard
-              city = 'cairo'
-              country = 'eg' 
-              temp = '28' 
-              maxTemp = '21'
-              minTemp = '18'
-              main = "Clouds"
+            <WeatherEngine/>
+            {/* <ForecastEngine 
+              city = 'Lodnon'
+              temp = '15'
+              country = 'UK'
+              main = 'CLOUDS'
             /> */}
           </div>
         );

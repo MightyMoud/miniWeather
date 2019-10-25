@@ -88,7 +88,6 @@ const WeatherEngine = ()=> {
     .then(response => response.json())
     .then(jsonResponse => {
       if(jsonResponse.cod===200) {
-        console.log(jsonResponse.weather[0].icon);
         dispatch({
           type: 'SEARCH_SUCCESS',
           payload: jsonResponse.main.temp,
@@ -140,6 +139,12 @@ const WeatherEngine = ()=> {
           country = { country }
           main = { weather.main }
           id = { weather.id }
+          // city = 'cairo'
+          // country = 'eg' 
+          // temp = '28' 
+          // maxTemp = '21'
+          // minTemp = '18'
+          // main = "Clouds"
         />
        </div>
        :

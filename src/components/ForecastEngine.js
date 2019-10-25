@@ -1,28 +1,46 @@
-
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import '../css/all.min.css'
 import '../css/weather-icons-wind.min.css'
 import '../App.css';
-import Search from './Search';
-import WeatherCard from './WeatherCard';
-import Error from'./Error';
+import ForecastCard from './ForecastCard';
+import Header from './Header'
+import Error from './Error'
+import DayForecast from './DayForecast';
 
 // this is the initial state of all the variables we need/expect to get from the API plus a couple others to handle errors
 const initialState = {
-  temp: 0,
-  loading: null,
+  loading: true,
   errorMessage: 0,
-  city: null,
-  main: {
-    averageTemp: null,
-    minTemp: null,
-    maxTemp: null
-  },
-  weather: {
-    id: null,
-    main : null,
-    description: null
-  },
+  forecast: [
+    {
+      main: null,
+      avgTemp : null,
+      minTemp : null,
+      maxTemp : null,
+      day: null
+    },
+    {
+      main: null,
+      avgTemp : null,
+      minTemp : null,
+      maxTemp : null,
+      day: null
+    },
+    {
+      main: null,
+      avgTemp : null,
+      minTemp : null,
+      maxTemp : null,
+      day: null
+    },
+    {
+      main: null,
+      avgTemp : null,
+      minTemp : null,
+      maxTemp : null,
+      day: null
+    }
+  ],
   cod:0
 };
 
@@ -39,22 +57,38 @@ const reducer = (state, action)=> {
       case 'SEARCH_SUCCESS':
       return {
         ...state,
-        temp: action.payload,
         loading: false,
-        errorMessage: action.error,
-        city: action.city,
-        main : {
-          averageTemp: action.averageTemp,
-          minTemp: action.minTemp,
-          maxTemp: action.maxTemp,
-        },
-        weather : {
-          id: action.id,
-          main: action.main,
-          description : action.description
-        },
-        country: action.country,
-        cod: action.cod
+        cod: action.cod,
+        forecast: [
+          {
+            main: action.main1,
+            avgTemp : action.avgTemp1,
+            minTemp : action.minTemp1,
+            maxTemp : action.maxTemp1,
+            day: action.day1
+          },
+          {
+            main: action.main2,
+            avgTemp : action.avgTemp2,
+            minTemp : action.minTemp2,
+            maxTemp : action.maxTemp2,
+            day: action.day2
+          },
+          {
+            main: action.main3,
+            avgTemp : action.avgTemp3,
+            minTemp : action.minTemp3,
+            maxTemp : action.maxTemp3,
+            day: action.day3
+          },
+          {
+            main: action.main4,
+            avgTemp : action.avgTemp4,
+            minTemp : action.minTemp4,
+            maxTemp : action.maxTemp4,
+            day: action.day4
+          }
+        ]
       }
       case 'SEARCH_FAIL':
       return {
@@ -69,41 +103,92 @@ const reducer = (state, action)=> {
 }
 
 // base component
-const WeatherEngine = ()=> {
+const ForecastEngine = ({ city, country, main, temp })=> {
   // basic declarations of state and the reducer hook
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { temp, loading, errorMessage, cod, city, country, main, weather } = state;
+  const { loading, errorMessage, cod, forecast } = state;
+//  assigning the background gardient color
+  var highColor = 0;
+  var lowColor = 0;
+  var color = null;
+  if(temp>12 && temp<40) {
+      highColor = (1+(1-(temp-17)/28)*254);
+      lowColor = highColor-150;
+      color = `linear-gradient(0deg, rgb(255,${highColor},0),rgb(255,${lowColor},0))`; 
+
+  } else if (temp<12) {
+      highColor = (1+(1-(temp-(-20))/38)*254);
+      lowColor = highColor+100;
+      color = `linear-gradient(0deg, rgb(0,${lowColor},255),rgb(0,${highColor},255))`; 
+  }
 
   // definition of the function that gets the API results and assignes it to dispatch
   // this happens once the search button is pressed
-
-  const getWeather = (city ) => {
+  useEffect ( () => {
     // once search is pressed, send search progress to display loading signal
     dispatch({
       type:'SEARCH_PROGRESS'
-    })
+    });
+    // some functions are needed to filter the API results and calculate the average for each day
+    // forecast sends reading every 3 hours. That is 12 temps per day. Take average of the 12 to be the expected per day
+    // function to extract all the 32 temps from the forecast
+    const extract = (obj) => obj.main.temp;
+    // function to slice the temps into 4 arrays - one array per day holding 12 temps
+    function segment(arr) {
+      let result = []; // this array will hold 4 internal arrays each of them holding 12 temps for each day
+      for (let i = 0; i<arr.length; i+=12){
+        result.push(arr.slice(i,i+12))
+      }
+      return result;
+    }
+    // function to get the average temp for each day
+    function calcAvgs (arr) {
+      let sum = 0;
+      for (let i = 0; i<arr.length; i++){
+          sum += arr[i]; 
+      }
+      let avg =  sum/arr.length;
+      return Math.floor(avg);
+    }
     // fetch the results from API the unload by dispatch
     // cod is the code returned form API, 200 is success otherwise it's faliure
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=644ba889d2629824a466b19685f307e0`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=48&units=metric&appid=644ba889d2629824a466b19685f307e0`)
     .then(response => response.json())
     .then(jsonResponse => {
-      if(jsonResponse.cod===200) {
-        console.log(jsonResponse.weather[0].icon);
+      if (jsonResponse.cod === "200") {
+        var temps = jsonResponse.list.map(extract); // extracting the temps from the list of each day
+        var daysTemps = segment(temps); // apply the slice function to the temps function
+        var avgTemps = daysTemps.map(calcAvgs); // retruns an array of strings with 4 average temps for each day
         dispatch({
           type: 'SEARCH_SUCCESS',
-          payload: jsonResponse.main.temp,
           cod: jsonResponse.cod,
-          city: jsonResponse.name,
-          averageTemp: jsonResponse.main.temp,
-          minTemp: jsonResponse.main.temp_min,
-          maxTemp: jsonResponse.main.temp_max,
-          country: jsonResponse.sys.country,
-          id: jsonResponse.weather[0].id,
-          icon: jsonResponse.weather[0].icon,
-          main: jsonResponse.weather[0].main,
-          description: jsonResponse.weather[0].description
+          city: jsonResponse.city.name,
+
+          main1: jsonResponse.list[0].weather[0].main,
+          avgTemp1 : avgTemps[0],
+          minTemp1 : Math.min.apply(Math,daysTemps[0]),
+          maxTemp1 : Math.max.apply(Math,daysTemps[0]),
+          day1: (new Date((jsonResponse.list[6].dt + jsonResponse.city.timezone) * 1000 )).toLocaleString('en-us', {weekday:'long'}),
+
+          main2: jsonResponse.list[12].weather[0].main,
+          avgTemp2 : avgTemps[1],
+          minTemp2 : Math.min.apply(Math,daysTemps[1]),
+          maxTemp2 : Math.max.apply(Math,daysTemps[1]),
+          day2: (new Date((jsonResponse.list[12].dt + jsonResponse.city.timezone) * 1000 )).toLocaleString('en-us', {weekday:'long'}),
+
+          main3: jsonResponse.list[24].weather[0].main,
+          avgTemp3 : avgTemps[2],
+          minTemp3 : Math.min.apply(Math,daysTemps[2]),
+          maxTemp3 : Math.max.apply(Math,daysTemps[2]),
+          day3: (new Date((jsonResponse.list[18].dt + jsonResponse.city.timezone) * 1000 )).toLocaleString('en-us', {weekday:'long'}),
+
+          main4: jsonResponse.list[36].weather[0].main,
+          avgTemp4 : avgTemps[3],
+          minTemp4 : Math.min.apply(Math,daysTemps[3]),
+          maxTemp4 : Math.max.apply(Math,daysTemps[3]),
+          day4: (new Date((jsonResponse.list[30].dt + jsonResponse.city.timezone) * 1000 )).toLocaleString('en-us', {weekday:'long'})
         })
-      } else if(jsonResponse.cod !== 200) {
+      } else if(jsonResponse.cod !== "200") {
         dispatch({
           type: 'SEARCH_FAIL',
           loading: false,
@@ -113,45 +198,53 @@ const WeatherEngine = ()=> {
       }
         
     })
-  }
+  },[city])
 
   // conditional rendering based on state values
   return(
-    <div>
+    <div className="app">
      {
-      //  render welcome screen to show the search component initially
-       loading === null && cod === 0 ? //   matching the initial state
-        <div className='welcome'>
-          <Search getWeather = { getWeather } />
-        </div>
-       :
-       loading === true ? // if loading is true - search button is pressed - show a loading icon
+      //  render loading after calling the component to action
+       loading === true  ? // if loading is true - useEffects has started talking to API
        <div className='loading'>     
         <i className='fas fa-spinner fa-4x spinner '></i>
        </div>
        :
-       temp !== 0 && cod===200 ? // if temp is updated and cod is 200 as in successful API response
+       cod === "200"  ? // if temp is updated and cod is 200 as in successful API response
        <div>
-        <WeatherCard 
-          maxTemp = { main.maxTemp }
-          minTemp = { main.minTemp }
-          temp ={ main.averageTemp } 
-          city = { city }
-          country = { country }
-          main = { weather.main }
-          id = { weather.id }
-          // forecast = {  }
-        />
+           <Header/>
+            <div className="container">
+              <div className="det" style= {{background: `${color}`}}>
+                <ForecastCard
+                  city= { city }
+                  country = { country }
+                  main = { main } 
+                  temp = { temp }
+                />
+                <div className="det__dwn">
+                  {forecast.map((day)=>(
+                    <DayForecast 
+                      avgTemp = {Math.floor(day.avgTemp)}
+                      main = {day.main}
+                      minTemp = {Math.floor(day.minTemp)}
+                      maxTemp = {Math.floor(day.maxTemp)}
+                      day = {day.day}
+                      key={day.avgTemp}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
        </div>
        :
-       loading === false ? // if loading is then error happend
+       cod !== "200" ? // if loading is then error happend
        <Error cod = { cod } errorMessage= { errorMessage } />
        :
        <h1>dunno</h1> // we never get to this point so yeah dunno!
-     }
+     } 
      </div>
   )
 }
 
-export default WeatherEngine;
+export default ForecastEngine;
 
