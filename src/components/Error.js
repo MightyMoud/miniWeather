@@ -1,6 +1,6 @@
 import React from 'react'
 import '../App.css';
-import WeatherEngine from './WeatherEngine'
+
 
 
 
@@ -10,7 +10,6 @@ const Error = (props) => {
          <h4>Some error happened!</h4>
          <h5> Error code is: { props.cod } </h5>
          <h5> The accompanying error message is:  <b>{props.errorMessage}</b> </h5>
-         <WeatherEngine/>
         </div>
     )
 }

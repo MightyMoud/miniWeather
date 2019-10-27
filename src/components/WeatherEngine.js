@@ -143,7 +143,10 @@ const WeatherEngine = ()=> {
        </div>
        :
        loading === false ? // if loading is then error happend
-       <Error cod = { cod } errorMessage= { errorMessage } />
+       <div className="welcome">
+         <Error cod = { cod } errorMessage= { errorMessage } />
+         <Search getWeather = { getWeather } />
+       </div>
        :
        <h1>dunno</h1> // we never get to this point so yeah dunno!
      }

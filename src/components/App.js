@@ -49,12 +49,6 @@ const App = ()=> {
         return (
           <div className='container'>
             <WeatherEngine/>
-            {/* <ForecastEngine 
-              city = 'Lodnon'
-              temp = '15'
-              country = 'UK'
-              main = 'CLOUDS'
-            /> */}
           </div>
         );
     }
