@@ -139,12 +139,6 @@ const WeatherEngine = ()=> {
           country = { country }
           main = { weather.main }
           id = { weather.id }
-          // city = 'cairo'
-          // country = 'eg' 
-          // temp = '28' 
-          // maxTemp = '21'
-          // minTemp = '18'
-          // main = "Clouds"
         />
        </div>
        :

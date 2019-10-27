@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "@reach/router";
+import '../App.css';
 
 const Header = () => {
 
@@ -8,7 +10,9 @@ const Header = () => {
                 <i className='fas fa-bars fa-2x'></i>
             </div>
             <div className='toBr__logo'>
-                <h1 className='toBr__name'>miniWeather</h1>
+                <Link className='toBr__name' to = '/'>
+                miniWeather
+                </Link>
             </div>
             <div className='toBr__text'>
                 <h1>today</h1>

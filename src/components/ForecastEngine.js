@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import '../css/all.min.css'
 import '../css/weather-icons-wind.min.css'
 import '../App.css';
+import '../cardBig.css';
 import ForecastCard from './ForecastCard';
 import Header from './Header'
 import Error from './Error'
@@ -206,8 +207,10 @@ const ForecastEngine = ({ city, country, main, temp })=> {
      {
       //  render loading after calling the component to action
        loading === true  ? // if loading is true - useEffects has started talking to API
-       <div className='loading'>     
-        <i className='fas fa-spinner fa-4x spinner '></i>
+       <div className="container">
+         <div className='loading'>     
+          <i className='fas fa-spinner fa-4x spinner '></i>
+         </div>
        </div>
        :
        cod === "200"  ? // if temp is updated and cod is 200 as in successful API response

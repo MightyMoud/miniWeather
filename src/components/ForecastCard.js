@@ -63,10 +63,6 @@ const ForecastCard = ({city, country, temp, main}) => {
                         <h2> {temp} <i className='wi wi-celsius'></i></h2>
                         <h3 className="det__condition">{ main }</h3>
                     </div>
-                    <div className="dta__sun">
-                        <h4>Sunrise: 7:00am</h4> 
-                        <h4>Sunset : 6:00pm</h4>
-                    </div>
                 </div>
                 <div className="up__loc">
                     <h1> { city } </h1>

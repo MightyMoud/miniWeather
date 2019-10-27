@@ -3,7 +3,7 @@ import '../card.css';
 import '../css/all.min.css'
 import '../css/weather-icons.min.css'
 import '../css/weather-icons-wind.min.css'
-import { Router, Link } from "@reach/router";
+import { Link } from "@reach/router";
 
 
 // ((1-((temp-17)/23)*254));

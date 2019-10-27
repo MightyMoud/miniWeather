@@ -48,25 +48,25 @@ const DayForecast = ({ avgTemp, main, minTemp, maxTemp,day }) =>{
 
     return(
         <div className="dwn__day">
-                    <div className="det__icon">
-                        <img src={ icon } alt={ main }/>
-                    </div>
-                    <div className="det__temp">
-                        <h2> { avgTemp } <i className='wi wi-celsius'></i></h2>
-                        <h3 className="det__condition">{ main }</h3>
-                    </div>
-                    <div className="det__highLow">
-                        <div className="det__high">
-                            <h3> <i className='wi wi-direction-up'></i>  {maxTemp} <i className='wi wi-celsius'></i> </h3>
-                            <h4 className='det--max'>max</h4>
-                        </div>
-                        <div className="det__low">
-                            <h3> <i className='wi wi-direction-down'></i>  {minTemp}  <i className='wi wi-celsius'></i> </h3>
-                            <h4 className='det--min'>min</h4>
-                        </div>
-                    </div>
-                    <h3>{ day }</h3>
+            <div className="det__icon">
+                <img src={ icon } alt={ main }/>
+            </div>
+            <div className="det__temp">
+                <h2> { avgTemp } <i className='wi wi-celsius'></i></h2>
+                <h3 className="det__condition">{ main }</h3>
+            </div>
+            <div className="det__highLow">
+                <div className="det__high">
+                    <h3> <i className='wi wi-direction-up'></i>  {maxTemp} <i className='wi wi-celsius'></i> </h3>
+                    <h4 className='det--max'>max</h4>
                 </div>
+                <div className="det__low">
+                    <h3> <i className='wi wi-direction-down'></i>  {minTemp}  <i className='wi wi-celsius'></i> </h3>
+                    <h4 className='det--min'>min</h4>
+                </div>
+            </div>
+            <h3>{ day }</h3>
+        </div>
     )
 }
 

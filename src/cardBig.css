@@ -1,7 +1,7 @@
 .det {
     margin: 10px;
     padding: 25px 25px;
-    width: 60vw;
+    width: 50vw;
     height: 50vh;
     border-radius: 20px;
     box-shadow: 2px 2px 20px rgba(197, 109, 255, 0.452);
@@ -22,23 +22,16 @@
 
 .up__dta {
     display: flex;
-    width: 50%;
+    width: 70%;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .dta__icon {
-    flex: 1 1 50%;
+    flex: 0 0 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.dta__sun {
-    flex: 1 0 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .dta__nums {
@@ -49,8 +42,16 @@
     align-items: center;
 }
 
+.dta__nums h2 {
+    font-size: 1.8rem;
+}
+
+.dta__nums h3 {
+    font-size: 1.3rem;
+}
+
 .up__loc {
-    flex: 0 1 50%;
+    flex: 0 1 60%;
     justify-self: flex-end;
     display: flex;
     flex-direction: column;
@@ -58,31 +59,46 @@
     align-items: center;
 }
 
+.up__loc h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.up__loc h2 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
 .det__dwn {
-    flex: 1 0 60%;
+    flex: 0 0 60%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
 .dwn__day {
+    width: 18%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 90%;
+    align-items: center;
+    padding: 0 5px;
+    height: 100%;
 }
 
 .det__icon {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    height: 130px;
-    transform: scale(0.7);
+    transform: scale(0.6);
+    height: 80%;
     transform-origin: center center;
 }
 
 .det__temp {
     font-size: 1.4rem;
+    flex: 0 0 20%;
 }
 
 .det__condition {

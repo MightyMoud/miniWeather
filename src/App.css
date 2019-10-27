@@ -25,7 +25,6 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    //background: linear-gradient(0deg, rgba(205, 131, 255, 0.322), rgba(231, 194, 255, 0.452));
 }
 
 @keyframes spin {
@@ -66,6 +65,12 @@
 
 .toBr__logo {
     flex: 1.5;
+}
+
+.toBr__name {
+    color: white;
+    font-size: 2.1rem;
+    text-decoration: none;
 }
 
 .toBr__text {
