@@ -1,8 +1,10 @@
 .det {
     margin: 10px;
     padding: 25px 25px;
-    width: 50vw;
+    width: 60vw;
+    min-width: 650px;
     height: 50vh;
+    max-height: 400px;
     border-radius: 20px;
     box-shadow: 2px 2px 20px rgba(197, 109, 255, 0.452);
     color: white;
@@ -125,4 +127,59 @@
     font-size: 0.9rem;
     color: blue;
     text-transform: uppercase;
+}
+
+@media screen and (max-width:765px) {
+    .det {
+        margin: unset;
+        padding: 5px 5px;
+        width: 90vw;
+        height: 80vh;
+        min-width: unset;
+        min-height: unset;
+        max-height: unset;
+        border-radius: 20px;
+        box-shadow: 2px 2px 20px rgba(197, 109, 255, 0.452);
+        color: white;
+        display: -webkit-flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+    .det__up {
+        flex: 0 1 30%;
+    }
+    .det__dwn {
+        flex-direction: column;
+    }
+    .dwn__day {
+        flex-direction: row-reverse;
+        width: 100%;
+        justify-content: space-around;
+        height: unset;
+    }
+    .det__highLow {
+        display: none;
+    }
+    .det__icon {
+        flex: 0 1 30%;
+    }
+    .det__icon img {
+        width: auto;
+        max-width: 100%;
+    }
+    .det__day {
+        text-align: center;
+        font-size: 4.5vmin;
+    }
+    .det__temp {
+        font-size: 4vmin;
+        display: flex;
+        align-items: center;
+    }
+    .det__temp h2 {
+        display: inherit;
+        margin: 5px;
+    }
 }

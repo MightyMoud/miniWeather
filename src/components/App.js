@@ -29,22 +29,13 @@ const App = ()=> {
             </div>
           );
       case 3:
-          return (
-            <div className='container'>
-                <WeatherEngine/>
-                <WeatherEngine/>
-                <WeatherEngine/>
-            </div>
-          );
-      case 4:
-          return (
-            <div className='container'>
-                <WeatherEngine/>
-                <WeatherEngine/>
-                <WeatherEngine/>
-                <WeatherEngine/>
-            </div>
-          );
+        return (
+          <div className='container' >
+              <WeatherEngine/>
+              <WeatherEngine/>
+              <WeatherEngine/>
+          </div>
+        );
       default:
         return (
           <div className='container'>
@@ -61,7 +52,7 @@ const App = ()=> {
 
 // I want to limit to 4 cards only for looks
   var visibility= null;
-  if(count<=3) {
+  if(count<=2) {
     visibility= `initial`;
   } else {
     visibility = 'none';
@@ -72,7 +63,7 @@ const App = ()=> {
     <Header/>
       {
         // another conditional rednering - as long as count is less than 5 then render Show() function
-        count < 5 ?
+        count < 4 ?
           show()
       : // count will never be more than 5 so yeah! 
         <div> 

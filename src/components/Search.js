@@ -65,6 +65,7 @@ const Search = (props) => {
             InputLabelProps={{
               className: classes.input
             }}
+            autoFocus = 'true'
          />
      
         <Button 

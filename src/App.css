@@ -5,6 +5,11 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+#root {
+    width: 100%;
+    height: 100%;
+}
+
 .app {
     display: flex;
     flex-direction: column;
@@ -19,7 +24,7 @@
 
 .container {
     width: 100%;
-    height: calc(100vh - 40px);
+    height: calc(100vh - 100px);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -75,8 +80,11 @@
 
 .toBr__text {
     flex: 2;
+    color: white;
     text-transform: uppercase;
     font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+    text-decoration: none;
 }
 
 .welcome {
@@ -119,4 +127,20 @@
 
 .MuiInputBase-input {
     color: white;
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        flex-direction: column;
+        height: calc(100vh - 100px);
+    }
+    .toBr__logo {
+        display: none;
+    }
+    .toBr__text {
+        text-align: center;
+    }
+    .toBr__menu {
+        padding: 5px 5px;
+    }
 }

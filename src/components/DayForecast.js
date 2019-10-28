@@ -65,7 +65,9 @@ const DayForecast = ({ avgTemp, main, minTemp, maxTemp,day }) =>{
                     <h4 className='det--min'>min</h4>
                 </div>
             </div>
-            <h3>{ day }</h3>
+            <div class="det__day">
+                <h3>{ day }</h3>
+            </div>
         </div>
     )
 }

@@ -73,7 +73,7 @@ const WeatherCard = ({city, country, temp, maxTemp, minTemp, id, main}) => {
     return(
             <div className="crd" style= {{background: `${color}`}}>
                 <div className="crd__location">
-                    <h1> { city } </h1>
+                    <Link className='mobCardLink' to ={`/details/${city}/${country}/${temp.toFixed(0)}/${main}`}><h1>{ city }</h1></Link>
                     <h2> { country } </h2>
                 </div>
                 <div className="crd__icon">

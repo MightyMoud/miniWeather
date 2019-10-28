@@ -14,9 +14,9 @@ const Header = () => {
                 miniWeather
                 </Link>
             </div>
-            <div className='toBr__text'>
-                <h1>today</h1>
-            </div>
+                <Link className='toBr__text' to='/'>
+                today
+                </Link>
         </div>
     )
 }
