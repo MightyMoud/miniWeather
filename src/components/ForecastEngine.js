@@ -107,7 +107,7 @@ const reducer = (state, action)=> {
 const ForecastEngine = ({ city, country, main, temp })=> {
   // basic declarations of state and the reducer hook
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { loading, errorMessage, cod, forecast } = state;
+  const { loading, cod, forecast } = state;
 //  assigning the background gardient color
   var highColor = 0;
   var lowColor = 0;
@@ -201,53 +201,52 @@ const ForecastEngine = ({ city, country, main, temp })=> {
     })
   },[city])
 
-  // conditional rendering based on state values
-  return(
-    <div className="app">
-     {
-      //  render loading after calling the component to action
-       loading === true  ? // if loading is true - useEffects has started talking to API
-       <div className="container">
-         <div className='loading'>     
+  const Loading = () => {
+    return (
+      <div className="container">
+        <div className='loading'>     
           <i className='fas fa-spinner fa-4x spinner '></i>
-         </div>
-       </div>
-       :
-       cod === "200"  ? // if temp is updated and cod is 200 as in successful API response
-       <div>
-           <Header/>
-            <div className="container">
-              <div className="det" style= {{background: `${color}`}}>
-                <ForecastCard
-                  city= { city }
-                  country = { country }
-                  main = { main } 
-                  temp = { temp }
-                />
-                <div className="det__dwn">
-                  {forecast.map((day)=>(
-                    <DayForecast 
-                      avgTemp = {Math.floor(day.avgTemp)}
-                      main = {day.main}
-                      minTemp = {Math.floor(day.minTemp)}
-                      maxTemp = {Math.floor(day.maxTemp)}
-                      day = {day.day}
-                      key={day.avgTemp}
-                    />
-                  ))}
+        </div>
+      </div>
+    )
+  }
+  const ErrorDiv = ({ cod, errorMessage }) => {
+    return (
+      <Error cod = { cod } errorMessage= { errorMessage } />
+    )
+  }
+
+  // conditional rendering based on state values
+      if (loading) {return <Loading/>} 
+      else if(cod==="200") {
+        return(
+          <>
+            <Header/>
+              <div className="container">
+                <div className="det" style= {{background: `${color}`}}>
+                  <ForecastCard
+                    city= { city }
+                    country = { country }
+                    main = { main } 
+                    temp = { temp }
+                  />
+                  <div className="det__dwn">
+                    {forecast.map((day)=>(
+                      <DayForecast 
+                        key={day.index}
+                        avgTemp = {Math.floor(day.avgTemp)}
+                        main = {day.main}
+                        minTemp = {Math.floor(day.minTemp)}
+                        maxTemp = {Math.floor(day.maxTemp)}
+                        day = {day.day}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-       </div>
-       :
-       cod !== "200" ? // if loading is then error happend
-       <Error cod = { cod } errorMessage= { errorMessage } />
-       :
-       <h1>dunno</h1> // we never get to this point so yeah dunno!
-     } 
-     </div>
-  )
+          </>   
+        )     
+      } else if (cod !== 200) {return <ErrorDiv/>}
 }
 
 export default ForecastEngine;
-
