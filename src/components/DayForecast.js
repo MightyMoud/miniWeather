@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DayForecast = ({ avgTemp, main, minTemp, maxTemp,day }) =>{
+const DayForecast = ({ avgTemp, main, minTemp, maxTemp,day, data, color, minAxis }) =>{
 
     // const icon = `wi ic wi-owm-day-${id}`;
     var icon = null;
@@ -47,6 +47,7 @@ const DayForecast = ({ avgTemp, main, minTemp, maxTemp,day }) =>{
     }
 
     return(
+
         <div className="dwn__day">
             <div className="det__icon">
                 <img src={ icon } alt={ main }/>
@@ -66,7 +67,9 @@ const DayForecast = ({ avgTemp, main, minTemp, maxTemp,day }) =>{
                 </div>
             </div>
             <div className="det__day">
-                <h3>{ day }</h3>
+                <h3>
+                { day }
+                </h3>
             </div>
         </div>
     )

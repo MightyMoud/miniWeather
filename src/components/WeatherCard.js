@@ -94,7 +94,7 @@ const WeatherCard = ({city, country, temp, maxTemp, minTemp, id, main}) => {
                     </div>
                 </div>
                 {/* <a href='#' className='crd__more'>More <i className='wi wi-direction-right'></i></a> */}
-                <Link to ={`/details/${city}/${country}/${temp.toFixed(0)}/${main}`}className='crd__more' >More <i className='wi wi-direction-right'></i></Link>
+                <Link to ={`/details/${city}/${country}/${temp.toFixed(0)}/${main}`} className='crd__more' >More <i className='wi wi-direction-right'></i></Link>
             </div>
     )
 

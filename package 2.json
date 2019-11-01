@@ -4,10 +4,9 @@
     "private": true,
     "dependencies": {
         "@material-ui/core": "^4.5.1",
-        "@nivo": "^0.31.0",
-        "@nivo/line": "^0.59.3",
         "@reach/router": "^1.2.1",
         "clsx": "^1.0.4",
+        "nivo": "^0.31.0",
         "react": "^16.10.2",
         "react-dom": "^16.10.2",
         "react-scripts": "3.2.0",

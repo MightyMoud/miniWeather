@@ -15,11 +15,16 @@
     flex-direction: column;
 }
 
+input:focus {
+    outline: 0;
+}
+
 .btnCon {
     margin: 0 auto;
     position: absolute;
     right: Calc(50% - 80px);
     bottom: 20px;
+    display: none;
 }
 
 .container {
@@ -30,6 +35,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    //background: linear-gradient(0deg, rgb(103, 44, 143), rgb(86, 41, 122));
 }
 
 @keyframes spin {
@@ -102,13 +108,57 @@
     align-items: center;
 }
 
-.search {
+.searchClosed {
+    position: relative;
     margin: 20px 0px;
     display: flex;
-    width: 300px;
-    height: 100%;
-    justify-content: space-between;
+    width: 50px;
+    height: 50px;
+    justify-content: space-around;
     align-items: center;
+    border-radius: 20px;
+    background: linear-gradient(0deg, rgb(149, 149, 149), rgb(200, 200, 200));
+    box-shadow: 2px 2px 20px rgba(246, 119, 246, 0.192);
+    transition: all 0.8s ease-in-out;
+}
+
+.searchOpen {
+    width: 230px;
+}
+
+.searchBtn {
+    display: none;
+}
+
+.searchIconClosed {
+    position: absolute;
+    width: 20px;
+}
+
+.searchIconOpen {
+    position: absolute;
+    left: 15px;
+    transform: rotateY(180deg);
+    transition: all 0.8s ease-in-out;
+    width: 20px;
+}
+
+.fieldClosed {
+    color: white;
+    background: transparent;
+    height: 70%;
+    width: 0%;
+    border: unset;
+}
+
+.fieldOpen {
+    transition: all 0.8s ease-in-out;
+    background: transparent;
+    padding-left: 40px;
+    border: unset;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
 }
 
 .red {
@@ -118,11 +168,6 @@
 
 .white {
     color: white;
-}
-
-.field {
-    background: linear-gradient(45deg, #6d4cc8 30%, #432c85 90%);
-    border-radius: 5px;
 }
 
 .MuiInputBase-input {
