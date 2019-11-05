@@ -9,7 +9,9 @@
         "@reach/router": "^1.2.1",
         "clsx": "^1.0.4",
         "react": "^16.10.2",
+        "react-autosuggest": "^9.4.3",
         "react-dom": "^16.10.2",
+        "react-geolocated": "^3.0.1",
         "react-scripts": "3.2.0",
         "responsive-react": "^3.0.2"
     },

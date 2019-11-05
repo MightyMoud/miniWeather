@@ -6,6 +6,7 @@ import '../App.css';
 import Header from './Header';
 import WeatherEngine from './WeatherEngine';
 import Button from '@material-ui/core/Button';
+import Welcome from './Welcome'
 
 
 
@@ -40,6 +41,8 @@ const App = ()=> {
   return(
     <div className="app">
     <Header/>
+    <Welcome/>
+
       {show()}
       {/* this is the button to add a new city  */}
       <div className="btnCon">

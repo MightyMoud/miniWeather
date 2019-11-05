@@ -3,6 +3,12 @@
     padding: 0;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    --text-color: #e1e2e6;
+    --text-color-error: #db3e3e;
+    --color-dark: #2a1e38;
+    --bg-dark: #070613;
+    --bg-bright: #382350;
+    --shadow: #0e24447e;
 }
 
 #root {
@@ -10,9 +16,14 @@
     height: 100%;
 }
 
+::placeholder {
+    color: #e1e2e6;
+}
+
 .app {
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to top, var(--bg-dark), var(--bg-bright));
 }
 
 input:focus {
@@ -24,7 +35,6 @@ input:focus {
     position: absolute;
     right: Calc(50% - 80px);
     bottom: 20px;
-    display: none;
 }
 
 .container {
@@ -35,7 +45,6 @@ input:focus {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    //background: linear-gradient(0deg, rgb(103, 44, 143), rgb(86, 41, 122));
 }
 
 @keyframes spin {
@@ -56,7 +65,7 @@ input:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: red;
+    color: var(--text-color-error);
 }
 
 .toBr {
@@ -64,10 +73,9 @@ input:focus {
     height: 40px;
     display: -webkit-flex;
     flex-direction: row;
-    background: #432c85;
-    border-bottom: 2px solid #2a1957;
-    color: white;
-    box-shadow: 2px 2px 20px rgba(197, 109, 255, 0.452);
+    background: #2a1e38;
+    color: var(--text-color);
+    box-shadow: 2px 2px 20px var(--shadow);
 }
 
 .toBr__menu {
@@ -79,14 +87,14 @@ input:focus {
 }
 
 .toBr__name {
-    color: white;
+    color: var(--text-color);
     font-size: 2.1rem;
     text-decoration: none;
 }
 
 .toBr__text {
     flex: 2;
-    color: white;
+    color: var(--text-color);
     text-transform: uppercase;
     font-family: 'Lato', sans-serif;
     font-size: 2rem;
@@ -114,11 +122,11 @@ input:focus {
     display: flex;
     width: 50px;
     height: 50px;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     border-radius: 20px;
-    background: linear-gradient(0deg, rgb(149, 149, 149), rgb(200, 200, 200));
-    box-shadow: 2px 2px 20px rgba(246, 119, 246, 0.192);
+    background: #46618b;
+    box-shadow: 2px 2px 20px var(--shadow);
     transition: all 0.8s ease-in-out;
 }
 
@@ -144,7 +152,7 @@ input:focus {
 }
 
 .fieldClosed {
-    color: white;
+    color: var(--text-color);
     background: transparent;
     height: 70%;
     width: 0%;
@@ -161,16 +169,32 @@ input:focus {
     font-size: 1.1rem;
 }
 
-.red {
-    color: red;
-    background: black;
+.suggestionCon {
+    color: var(--text-color);
+    transition: all 0.6s ease-in;
+    position: absolute;
+    padding-left: 40px;
+    width: calc(100% - 42px);
+    border-radius: 0 0 20px 20px;
+    background: #46618b;
 }
 
-.white {
-    color: white;
+.suggestionList {
+    transition: all 0.6s ease-in;
+    list-style: none;
+    text-decoration: none;
 }
 
-.MuiInputBase-input {
+.slideIn {
+    transition: all 0.6s ease-in;
+}
+
+.suggestionList li {
+    margin: 0.5rem 0;
+    transition: all 0.1s ease-in;
+}
+
+.suggestionHighlighted {
     color: white;
 }
 

@@ -77,7 +77,7 @@ const WeatherEngine = ()=> {
   // definition of the function that gets the API results and assignes it to dispatch
   // this happens once the search button is pressed
 
-  const getWeather = (city ) => {
+  const getWeather = (city) => {
     // once search is pressed, send search progress to display loading signal
     dispatch({
       type:'SEARCH_PROGRESS'
@@ -130,7 +130,7 @@ const WeatherEngine = ()=> {
        </div>
        :
        temp !== 0 && cod===200 ? // if temp is updated and cod is 200 as in successful API response
-       <div>
+       <>
         <WeatherCard 
           maxTemp = { main.maxTemp }
           minTemp = { main.minTemp }
@@ -140,7 +140,7 @@ const WeatherEngine = ()=> {
           main = { weather.main }
           id = { weather.id }
         />
-       </div>
+       </>
        :
        loading === false ? // if loading is then error happend
        <div className="welcome">
