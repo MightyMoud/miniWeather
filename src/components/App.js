@@ -23,7 +23,8 @@ const App = ()=> {
     }
     return (
       <div className="container">
-        {engines}
+        <Welcome/>
+        {engines} 
       </div>
     )
 
@@ -36,13 +37,11 @@ const App = ()=> {
 
 // I want to limit to 3 cards only for looks
   var visibility= null;
-  count<3 ? visibility = 'initial' : visibility = 'none';
+  count<2 ? visibility = 'initial' : visibility = 'none';
 
   return(
     <div className="app">
     <Header/>
-    <Welcome/>
-
       {show()}
       {/* this is the button to add a new city  */}
       <div className="btnCon">

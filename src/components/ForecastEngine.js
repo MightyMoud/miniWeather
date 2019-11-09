@@ -7,7 +7,7 @@ import ForecastCard from './ForecastCard';
 import Header from './Header'
 import Error from './Error'
 import DayForecast from './DayForecast';
-import DailyGraph from './DailyGraph';
+//import DailyGraph from './DailyGraph';
 
 
 // this is the initial state of all the variables we need/expect to get from the API plus a couple others to handle errors
@@ -44,12 +44,12 @@ const initialState = {
       day: null
     }
   ],
-  data: [
-    {
-        id: 'temp',
-        data : []
-    }
-  ],
+  // data: [
+  //   {
+  //       id: 'temp',
+  //       data : []
+  //   }
+  // ],
   cod:0
 };
 
@@ -68,7 +68,7 @@ const reducer = (state, action)=> {
         ...state,
         loading: false,
         cod: action.cod,
-        data: action.data,
+        //data: action.data,
         forecast: [
           {
             main: action.main1,
@@ -116,7 +116,7 @@ const reducer = (state, action)=> {
 const ForecastEngine = ({ city, country, main, temp })=> {
   // basic declarations of state and the reducer hook
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { loading, cod, forecast,data } = state;
+  const { loading, cod, forecast/*,data  */} = state;
 //  assigning the background gardient color
   var highColor = 0;
   var lowColor = 0;
@@ -168,7 +168,6 @@ const ForecastEngine = ({ city, country, main, temp })=> {
     .then(jsonResponse => {
       if (jsonResponse.cod === "200") {
         var temps = jsonResponse.list.map(extract); // extracting the temps from the list of each day
-        console.log(temps)
         var daysTemps = segment(temps); // apply the slice function to the temps function
         var avgTemps = daysTemps.map(calcAvgs); // retruns an array of strings with 4 average temps for each day
         // making an array with all the times of the forecast
@@ -176,8 +175,6 @@ const ForecastEngine = ({ city, country, main, temp })=> {
         for(let i=0 ; i<32; i++) {
           times.push(new Date((jsonResponse.list[i].dt) * 1000 ).getHours());
         }
-        console.log(jsonResponse.list[0].dt)
-        console.log(jsonResponse.city.timezone)
         // forumlating the data to be shown in terms of X,Y points -- full list of 32 points
         var dataFull = [];
         for (let i =0; i<32; i++) {
@@ -186,7 +183,6 @@ const ForecastEngine = ({ city, country, main, temp })=> {
             y:temps[i]
           });
         }
-        console.log(dataFull.slice(0,8));
         var dataP = [
           {
             id: 'temp',

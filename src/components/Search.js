@@ -93,7 +93,7 @@ const renderSuggestion = suggestion => (
   return (
     <>
       <form  className={`searchClosed ${searchClass}`}>
-        <img src='./img/search.svg' className={`searchIconClosed ${searchIconClass}`} onMouseEnter={ changeClass }></img>
+        <img src='./img/search.svg' alt='search Icon' className={`searchIconClosed ${searchIconClass}`} onMouseEnter={ changeClass } onClick= { changeClass }></img>
       <input
         className = 'searchBtn'
         onClick={searchWeather} 

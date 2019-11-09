@@ -1,6 +1,6 @@
 .det {
     margin: 10px;
-    padding: 25px 25px;
+    padding: 30px 25px;
     width: 60vw;
     min-width: 650px;
     height: 50vh;
@@ -131,7 +131,7 @@
 
 @media screen and (max-width:765px) {
     .det {
-        margin: unset;
+        margin: 10px;
         padding: 5px 5px;
         width: 90vw;
         height: 80vh;
@@ -139,7 +139,7 @@
         min-height: unset;
         max-height: unset;
         border-radius: 20px;
-        box-shadow: 2px 2px 20px rgba(197, 109, 255, 0.452);
+        box-shadow: 2px 2px 12px rgba(197, 109, 255, 0.452);
         color: white;
         display: -webkit-flex;
         flex-direction: column;

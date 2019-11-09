@@ -138,7 +138,7 @@ const WeatherEngine = ()=> {
           city = { city }
           country = { country }
           main = { weather.main }
-          id = { weather.id }
+          id = { true }
         />
        </>
        :
@@ -148,7 +148,7 @@ const WeatherEngine = ()=> {
          <Search getWeather = { getWeather } />
        </div>
        :
-       <h1>dunno</h1> // we never get to this point so yeah dunno!
+        null
      }
      </div>
   )

@@ -80,7 +80,7 @@
 
 @media screen and (max-width:765px) {
     .crd {
-        width: 90vw;
+        width: 75vw;
         height: 15vh;
         max-height: unset;
         min-height: unset;
@@ -88,7 +88,7 @@
         max-width: unset;
         flex-direction: row;
         justify-content: space-evenly;
-        padding: 2px 2px;
+        padding: 3px 3px;
     }
     .crd__location {
         max-width: 30%;
@@ -114,21 +114,5 @@
     }
     .crd__more {
         display: none;
-    }
-    .crd:hover {
-        transform: unset;
-        box-shadow: unset;
-    }
-    .crd:hover .crd__more {
-        bottom: unset;
-    }
-    .crd__more {
-        position: absolute;
-        margin-top: unset;
-        transition: all 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-        text-decoration: none;
-        bottom: unset;
-        color: white;
-        font-size: 1.5rem;
     }
 }
