@@ -67,7 +67,7 @@ const Welcome = ({ coords, isGeolocationAvailable, isGeolocationEnabled, positio
                         main = { state.main }
                         id={true}
                         />
-                        <h3> It's a {state.main} {state.temp > 35 ? 'blazing hot' : state.temp > 27 ? 'steaming hot' : state.temp > 20 ? 'hot' : state.temp > 17 ? 'warm' : state.temp > 10 ? 'chilly' : state.temp > 5 ? 'cool' : state.temp > 0 ? 'cold' : 'freeazing' } day in { state.city } </h3>
+                        <h3> It's a {state.temp > 35 ? 'blazing hot' : state.temp > 27 ? 'steaming hot' : state.temp > 20 ? 'hot' : state.temp > 17 ? 'warm' : state.temp > 10 ? 'chilly' : state.temp > 5 ? 'cool' : state.temp > 0 ? 'cold' : 'freeazing' } day in { state.city } </h3>
                 </Container>
             ) : (
                 <Container>
@@ -92,7 +92,7 @@ export default geolocated ({
 const Container = styled.div`
     color: var(--text-color);
     width: 50vw;
-    max-width: 450px;
+    max-width: 520px;
     height: 40vh;
     text-align: center;
     background: var(--bg-light);

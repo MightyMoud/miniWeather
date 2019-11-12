@@ -139,8 +139,23 @@ input:focus {
     width: 230px;
 }
 
-.searchBtn {
-    display: none;
+.searchBtnClosed {
+    position: absolute;
+    right: -50px;
+    height: 50px;
+    border-radius: 20px;
+    width: 40px;
+    background: #394e70;
+    color: var(--text-color);
+    border: none;
+    font-size: 0.8rem;
+    transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+    opacity: 0;
+}
+
+.searchBtnOpen {
+    right: 0px;
+    opacity: 100;
 }
 
 .searchIconClosed {

@@ -121,7 +121,7 @@ const ForecastEngine = ({ city, country, main, temp })=> {
   var highColor = 0;
   var lowColor = 0;
   var color = null;
-  if(temp>12 && temp<40) {
+  if(temp>=12 && temp<40) {
       highColor = (1+(1-(temp-17)/28)*254);
       lowColor = highColor-150;
       color = `linear-gradient(0deg, rgb(255,${highColor},0),rgb(255,${lowColor},0))`; 

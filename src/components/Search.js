@@ -14,6 +14,7 @@ const Search = ({ getWeather }) => {
   const[fieldClass, setFieldClass] = useState('')
   const[searchClass, setSearchClass] = useState('');
   const[searchIconClass, setSearchIconClass] = useState('');
+  const[btnClass, setBtnClass] = useState('');
 
 
 
@@ -58,27 +59,38 @@ const renderSuggestion = suggestion => (
     setSuggestions([]);
   };
 
-   // Autosuggest will pass through all these props to the input.
-   const inputProps = {
-    placeholder: 'Search for a city',
-    value,
-    onChange: onChange
-  };
   
-
+  
   const resetInputFiled = (e)=> {
-      setCity("");
+    setCity("");
   }
   const searchWeather = (e)=>{
-      e.preventDefault();
+    e.preventDefault();
+    getWeather(city);
+    resetInputFiled();
+  }
+  
+  // Autosuggest will pass through all these props to the input.
+  const inputProps = {
+   placeholder: 'Search for a city',
+   value,
+   onChange: onChange
+ };
+
+  const handleEnterButton = (e) => {
+    e.preventDefault();
+    if(e.key === 'Enter') {
       getWeather(city);
       resetInputFiled();
+    }
   }
 
   const changeClass = () => {
     setFieldClass('fieldOpen');
     setSearchClass('searchOpen')
     setSearchIconClass('searchIconOpen')
+    setTimeout(()=> setBtnClass('searchBtnOpen') ,500)
+    clearTimeout();
   }
   
   const autosuggestStyle = {
@@ -94,12 +106,6 @@ const renderSuggestion = suggestion => (
     <>
       <form  className={`searchClosed ${searchClass}`}>
         <img src='./img/search.svg' alt='search Icon' className={`searchIconClosed ${searchIconClass}`} onMouseEnter={ changeClass } onClick= { changeClass }></img>
-      <input
-        className = 'searchBtn'
-        onClick={searchWeather} 
-        type="submit" 
-        value="SEARCH"
-      />
        <Autosuggest
         theme = {autosuggestStyle}
         highlightFirstSuggestion = {true}
@@ -109,7 +115,13 @@ const renderSuggestion = suggestion => (
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
-        onSubmit= {searchWeather}
+      />
+      <input
+        className = {`searchBtnClosed ${btnClass}`}
+        onClick={searchWeather} 
+        onKeyDown= {handleEnterButton}
+        type="submit" 
+        value="GO"
       />
       </form>
     </>
